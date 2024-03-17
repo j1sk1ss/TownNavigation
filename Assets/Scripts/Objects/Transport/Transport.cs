@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -6,6 +7,7 @@ using UnityEngine.AI;
 public class Transport : MonoBehaviour {
     private void Awake() {
         storage     = 0;
+        reserved    = 0;
         destination = null;
 
         // Cash transform
@@ -19,6 +21,7 @@ public class Transport : MonoBehaviour {
     public delegate Foundation TakeFoundation(Transport transport, bool isFree, Foundation ignore);
     public static event TakeFoundation TakeEvent;    
     [SerializeField] private int storage { get; set; }
+    [SerializeField] private int reserved { get; set; }
     [SerializeField] private Foundation destination { get; set; }
     [SerializeField] private Foundation prevDestination { get; set; }
     [SerializeField] private TMP_Text label { get; set; }
@@ -43,8 +46,9 @@ public class Transport : MonoBehaviour {
     private void SetDestination(bool isEmpty) {
         var foundation = TakeEvent?.Invoke(this, isEmpty, prevDestination);
         if (foundation == null) return;
-        
-        if (!isEmpty) foundation.ChangeReserved(2);
+
+        reserved = new System.Random().Next(Math.Max(0, foundation.GetStorage() - foundation.GetReserved()));
+        if (!isEmpty) foundation.ChangeReserved(reserved);
         destination = foundation;
 
         agent.SetDestination(destination.transform.localPosition);
@@ -67,9 +71,9 @@ public class Transport : MonoBehaviour {
         }
         
         // If transport takes goods from foundation
-        destination.ChangeStorage(-2);
-        destination.ChangeReserved(-2);
-        storage = 2;
+        destination.ChangeStorage(-reserved);
+        destination.ChangeReserved(-reserved);
+        storage = reserved;
 
         prevDestination = destination;
         destination = null;

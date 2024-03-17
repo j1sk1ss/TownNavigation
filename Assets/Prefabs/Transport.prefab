@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9189592891461040957}
   - component: {fileID: 8322696945570679357}
   - component: {fileID: 418767900150948920}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Whell (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 6478811394726686383}
   - component: {fileID: 5358531720486774522}
   - component: {fileID: 1646556824664092759}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Whell (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 5419868433504350859}
   - component: {fileID: 5192997445165494898}
   - component: {fileID: 6066552087203298716}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Transport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,7 +483,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4628168704283283014}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.50000006
+  m_Radius: 0.25
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -492,10 +492,10 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 0.99999994
+  m_Height: 1.09
   m_BaseOffset: 0.49999997
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1
 --- !u!1 &5137983877590014035
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 1351255593735577734}
   - component: {fileID: 1623768935014768559}
   - component: {fileID: 6806732952664166038}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Whell (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -615,7 +615,7 @@ GameObject:
   - component: {fileID: 7191572625382454434}
   - component: {fileID: 8345201241357104101}
   - component: {fileID: 9058489893722455712}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Whell (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
