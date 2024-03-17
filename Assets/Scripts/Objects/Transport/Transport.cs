@@ -18,7 +18,7 @@ public class Transport : MonoBehaviour {
         label = transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
     }
     
-    public delegate Foundation TakeFoundation(Transport transport, bool isFree, Foundation ignore);
+    public delegate Foundation TakeFoundation(Transport transport, bool isFree, Foundation ignore, int reserved);
     public static event TakeFoundation TakeEvent;    
     [SerializeField] private int storage { get; set; }
     [SerializeField] private int reserved { get; set; }
@@ -44,7 +44,7 @@ public class Transport : MonoBehaviour {
     /// </summary>
     /// <param name="isEmpty"> Is empty foundation? </param>
     private void SetDestination(bool isEmpty) {
-        var foundation = TakeEvent?.Invoke(this, isEmpty, prevDestination);
+        var foundation = TakeEvent?.Invoke(this, isEmpty, prevDestination, reserved);
         if (foundation == null) return;
 
         reserved = new System.Random().Next(Math.Max(0, foundation.GetStorage() - foundation.GetReserved()));

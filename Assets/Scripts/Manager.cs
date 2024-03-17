@@ -48,7 +48,7 @@ public class Manager : MonoBehaviour {
     /// <param name="isEmpty"> Is empty foundation that want to find transport? </param>
     /// <param name="ignore"> Ignore some foundation </param>
     /// <returns> Nearest to transport foundation </returns>
-    private Foundation GiveFoundation(Transport transport, bool isEmpty, Foundation ignore = null) {
+    private Foundation GiveFoundation(Transport transport, bool isEmpty, Foundation ignore = null, int reserved = 2) {
         var list = isEmpty ? freeFoundations : fullFoundations;
 
         Foundation nearest = null;
@@ -56,7 +56,7 @@ public class Manager : MonoBehaviour {
         foreach (var foundation in list) {
             var enableGoods = foundation.GetStorage() - foundation.GetReserved();
             var distance = Vector3.Distance(foundation.transform.localPosition, transport.transform.localPosition);
-            if (!isEmpty && enableGoods < 2) continue; // Is has not reserved goods
+            if (!isEmpty && enableGoods < reserved) continue; // Is has not reserved goods
             if (distance >= lowestDistance || ignore == foundation) continue; // Is nearest and is not ignored
             
             lowestDistance = distance;
